@@ -1,0 +1,37 @@
+.products-page{
+    padding:40px;
+    min-height:80vh;
+}
+
+.products-page h1{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+.search-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.search-box input {
+    width: 450px;
+    max-width: 90%;
+    padding: 14px 18px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.search-box input:focus {
+    border-color: orange;
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.3);
+}

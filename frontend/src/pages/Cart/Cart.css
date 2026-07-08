@@ -1,0 +1,126 @@
+.cart-page {
+    width: min(1180px, calc(100% - 32px));
+    margin: auto;
+    padding: 44px 0 70px;
+    min-height: 70vh;
+}
+
+.cart-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.cart-header p {
+    color: #c76b00;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.cart-header h1 {
+    color: #131921;
+    font-size: 36px;
+    margin-top: 6px;
+}
+
+.cart-header span {
+    background: #fff3df;
+    color: #8a4c00;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.empty-cart {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(19, 25, 33, .1);
+    padding: 34px;
+}
+
+.empty-cart p {
+    color: #667085;
+    margin-top: 8px;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 28px;
+    align-items: start;
+}
+
+.cart-items {
+    display: grid;
+    gap: 18px;
+}
+
+.cart-summary {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(19, 25, 33, .12);
+    padding: 24px;
+    position: sticky;
+    top: 24px;
+}
+
+.cart-summary h2 {
+    color: #131921;
+    margin-bottom: 22px;
+}
+
+.summary-row,
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 13px 0;
+    border-bottom: 1px solid #e6e9ee;
+}
+
+.summary-row span,
+.summary-total span {
+    color: #667085;
+}
+
+.summary-row strong,
+.summary-total strong {
+    color: #131921;
+}
+
+.summary-total {
+    border-bottom: none;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+.buy-now-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    background: #febd69;
+    color: #131921;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.buy-now-btn:disabled {
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+@media (max-width: 850px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-summary {
+        position: static;
+    }
+}

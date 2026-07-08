@@ -1,0 +1,40 @@
+◇ injected env (2) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+http://localhost:3000
+connected
+ValidationError: user validation failed: username: Path `username` is required., email: Path `email` is required.
+    at model.validate (E:\Reactmockproject\backend\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (E:\Reactmockproject\backend\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Reactmockproject\backend\node_modules\mongoose\lib\model.js:675:7)
+    at async Function.create (E:\Reactmockproject\backend\node_modules\mongoose\lib\model.js:2763:5)
+    at async register (E:\Reactmockproject\backend\controllers\authcontroller.js:21:26) {
+  errors: {
+    username: ValidatorError: Path `username` is required.
+        at SchemaString.doValidate (E:\Reactmockproject\backend\node_modules\mongoose\lib\schemaType.js:1515:13)
+        at model.validate (E:\Reactmockproject\backend\node_modules\mongoose\lib\document.js:2842:20)
+        at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at async model.$__save (E:\Reactmockproject\backend\node_modules\mongoose\lib\model.js:399:7)
+        at async maybeTracedSave (E:\Reactmockproject\backend\node_modules\mongoose\lib\model.js:675:7) {
+      properties: [Object],
+      kind: 'required',
+      path: 'username',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose#validatorError)]: true
+    },
+    email: ValidatorError: Path `email` is required.
+        at SchemaString.doValidate (E:\Reactmockproject\backend\node_modules\mongoose\lib\schemaType.js:1515:13)
+        at model.validate (E:\Reactmockproject\backend\node_modules\mongoose\lib\document.js:2842:20)
+        at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at async model.$__save (E:\Reactmockproject\backend\node_modules\mongoose\lib\model.js:399:7)
+        at async maybeTracedSave (E:\Reactmockproject\backend\node_modules\mongoose\lib\model.js:675:7) {
+      properties: [Object],
+      kind: 'required',
+      path: 'email',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose#validatorError)]: true
+    }
+  },
+  _message: 'user validation failed'
+}

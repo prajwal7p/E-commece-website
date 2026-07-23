@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: e-commerce-website
+    name: e-commece-website
     runtime: node
     rootDir: backend
     buildCommand: npm install

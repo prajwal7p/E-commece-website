@@ -53,4 +53,11 @@ app.use("/api", comprouter);
 app.use("/api", cartrouter);
 app.use("/api", orderrouter);
 
+app.use((req, res) => {
+  res.status(404).json({
+    status: "Route not found",
+    path: req.originalUrl,
+  });
+});
+
 module.exports = app;

@@ -2,6 +2,13 @@ const bcrypt = require("bcrypt")
 const usermodel = require("../modules/userschema")
 const jwt = require("jsonwebtoken")
 
+const jwtSecret = () => process.env.JWT_SECRET || process.env.SECRET || process.env.secret
+const cookieOptions = () => ({
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    secure: process.env.NODE_ENV === "production",
+})
+
 //creating routers 
 const register = async (req, res) => {
     const { username, email, password, role } = req.body
@@ -58,8 +65,8 @@ const login = async (req, res) => {
             const token = jwt.sign({
                 email: checkuserexist.email,
                 role: checkuserexist.role
-            }, process.env.secret)
-            res.cookie("user1", token)
+            }, jwtSecret())
+            res.cookie("user1", token, cookieOptions())
 
            return res.status(200).json({
     status: "Logged in successfully",
@@ -91,7 +98,7 @@ const login = async (req, res) => {
 
 
 const logout = (req, res) => {
-    res.clearCookie("user1")
+    res.clearCookie("user1", cookieOptions())
     return res.status(200).json({
         status: "logged out success",
     })
@@ -108,7 +115,7 @@ const getCurrentUser = (req, res) => {
             });
         }
 
-        const user = jwt.verify(token, process.env.secret);
+        const user = jwt.verify(token, jwtSecret());
 
         return res.status(200).json(user);
     } catch (err) {

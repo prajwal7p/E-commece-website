@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 
+const jwtSecret = () => process.env.JWT_SECRET || process.env.SECRET || process.env.secret;
+
 function requireLogin(req, res, next) {
   try {
     const token = req.cookies.user1;
@@ -10,7 +12,7 @@ function requireLogin(req, res, next) {
       });
     }
 
-    req.user = jwt.verify(token, process.env.secret);
+    req.user = jwt.verify(token, jwtSecret());
     next();
   } catch {
     return res.status(401).json({

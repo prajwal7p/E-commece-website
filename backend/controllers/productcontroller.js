@@ -1,5 +1,8 @@
 const jwt=require("jsonwebtoken")
 const productmodel = require("../modules/productschema")
+
+const jwtSecret = () => process.env.JWT_SECRET || process.env.SECRET || process.env.secret
+
 const addproduct=async (req,res) => {
     const {title,image,description,price}=req.body
 
@@ -10,7 +13,7 @@ const addproduct=async (req,res) => {
     status: "Please login",
   });
 }
-      let tdata=jwt.verify(token,process.env.secret)
+      let tdata=jwt.verify(token,jwtSecret())
      if(tdata.role=="user"){
         return res.status(403).json({
             status:"unautharized access"

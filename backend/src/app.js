@@ -9,9 +9,24 @@ const orderrouter = require("../routers/orderroutes");
 
 const app = express();
 
+const allowedOrigins = (
+  process.env.CLIENT_URL ||
+  process.env.FRONTEND_URL ||
+  "http://localhost:5173"
+)
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
@@ -19,9 +34,20 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "API is running",
+  });
+});
+
 app.use("/", authrouter);
 app.use("/", comprouter);
 app.use("/", cartrouter);
 app.use("/", orderrouter);
+
+app.use("/api", authrouter);
+app.use("/api", comprouter);
+app.use("/api", cartrouter);
+app.use("/api", orderrouter);
 
 module.exports = app;
